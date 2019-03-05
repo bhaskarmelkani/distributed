@@ -6,12 +6,12 @@
       <small>Free Online Retrospective Tool</small>
     </h1>
 
-    <button ng-click="goToPremium()">NEW BOARD</button>
+    <button ng-click="modalService.openAddNewBoard(this)">NEW BOARD</button>
     <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIC5Q7&placement=funretrogithubio" id="_carbonads_js"></script>
     <h2 class="section-header">Receive tips & tricks about retrospectives</h2>
     <a class="button" href="http://eepurl.com/caj-19" target="_blank">SUBSCRIBE HERE</a>
   </section>
-  <!-- <section class="difference-versions">
+  <section class="difference-versions">
     <h2>Differences between the free and
       <a href="https://funretro.io">Premium</a> versions</h2>
     <p class="premium-desc">With the premium version you can see the history of all your retrospectives, better control of who can edit your board,
@@ -38,7 +38,7 @@
             <i ng-if="feature.free === 'X'" class="fa fa-check">
             </i>
             <i ng-if="feature.free === ''" class="fa fa-times">
-          </i>
+            </i>
           </td>
           <td>
             <span class="green-feature" ng-if="feature.premium !== 'X' && feature.premium !== ''">{{ feature.premium }}</span>
@@ -51,7 +51,7 @@
       </tbody>
     </table>
     <a class="button" href="https://funretro.io">CHECK PREMIUM VERSION</a>
-  </section> -->
+  </section>
   <section class="step">
     <h2>Set the context</h2>
     <img src="img/image1.png" alt="screenshot of set the context feature" />

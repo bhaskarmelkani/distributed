@@ -3,8 +3,6 @@ Easy to use and beautiful restrospective board.
 
 Learn more about retrospectives at [funretrospectives.com](http://funretrospectives.com)
 
-Fun retrospective guide at [Dummies guide to retrospectives](https://github.com/gmuraleekrishna/dummies-guide-to-retrospectives)
-
 [![Build](https://travis-ci.org/funretro/distributed.svg?branch=master)](https://travis-ci.org/funretro/distributed)
 <a href="https://codeclimate.com/github/funretro/distributed"><img src="https://codeclimate.com/github/glauberramos/fireideaz/badges/gpa.svg" /></a>&nbsp;[![devDependency Status](https://david-dm.org/funretro/distributed/dev-status.svg)](https://david-dm.org/funretro/distributed#info=devDependencies)
 
@@ -59,55 +57,3 @@ Our tests run on [TravisCI](https://travis-ci.org/funretro/distributed)
 2. Refactor and watch tests re-run.
 3. Fix any red tests
 4. Note: you can open [http://localhost:9876/debug.html](http://localhost:9876/debug.html) to run tests with a browser
-
-
-## Backers
-
-Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/distributed#backer)]
-
-<a href="https://opencollective.com/distributed/backer/0/website" target="_blank"><img src="https://opencollective.com/distributed/backer/0/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/1/website" target="_blank"><img src="https://opencollective.com/distributed/backer/1/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/2/website" target="_blank"><img src="https://opencollective.com/distributed/backer/2/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/3/website" target="_blank"><img src="https://opencollective.com/distributed/backer/3/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/4/website" target="_blank"><img src="https://opencollective.com/distributed/backer/4/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/5/website" target="_blank"><img src="https://opencollective.com/distributed/backer/5/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/6/website" target="_blank"><img src="https://opencollective.com/distributed/backer/6/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/7/website" target="_blank"><img src="https://opencollective.com/distributed/backer/7/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/8/website" target="_blank"><img src="https://opencollective.com/distributed/backer/8/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/9/website" target="_blank"><img src="https://opencollective.com/distributed/backer/9/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/10/website" target="_blank"><img src="https://opencollective.com/distributed/backer/10/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/11/website" target="_blank"><img src="https://opencollective.com/distributed/backer/11/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/12/website" target="_blank"><img src="https://opencollective.com/distributed/backer/12/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/13/website" target="_blank"><img src="https://opencollective.com/distributed/backer/13/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/14/website" target="_blank"><img src="https://opencollective.com/distributed/backer/14/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/15/website" target="_blank"><img src="https://opencollective.com/distributed/backer/15/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/16/website" target="_blank"><img src="https://opencollective.com/distributed/backer/16/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/17/website" target="_blank"><img src="https://opencollective.com/distributed/backer/17/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/18/website" target="_blank"><img src="https://opencollective.com/distributed/backer/18/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/19/website" target="_blank"><img src="https://opencollective.com/distributed/backer/19/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/20/website" target="_blank"><img src="https://opencollective.com/distributed/backer/20/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/21/website" target="_blank"><img src="https://opencollective.com/distributed/backer/21/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/22/website" target="_blank"><img src="https://opencollective.com/distributed/backer/22/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/23/website" target="_blank"><img src="https://opencollective.com/distributed/backer/23/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/24/website" target="_blank"><img src="https://opencollective.com/distributed/backer/24/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/25/website" target="_blank"><img src="https://opencollective.com/distributed/backer/25/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/26/website" target="_blank"><img src="https://opencollective.com/distributed/backer/26/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/27/website" target="_blank"><img src="https://opencollective.com/distributed/backer/27/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/28/website" target="_blank"><img src="https://opencollective.com/distributed/backer/28/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/backer/29/website" target="_blank"><img src="https://opencollective.com/distributed/backer/29/avatar.svg"></a>
-
-
-## Sponsors
-
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/distributed#sponsor)]
-
-<a href="https://opencollective.com/distributed/sponsor/0/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/1/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/2/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/3/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/4/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/5/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/6/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/7/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/8/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/distributed/sponsor/9/website" target="_blank"><img src="https://opencollective.com/distributed/sponsor/9/avatar.svg"></a>

@@ -1,9 +1,11 @@
-angular.module('fireideaz', ['firebase',
-               'ngDialog',
-               'lvl.directives.dragdrop',
-               'ngSanitize',
-               'ngAria',
-               'ngFileUpload']);
+angular.module('fireideaz', [
+  'firebase',
+  'ngDialog',
+  'lvl.directives.dragdrop',
+  'ngSanitize',
+  'ngAria',
+  'ngFileUpload'
+]);
 
 'use strict';
 
@@ -46,22 +48,104 @@ angular
 'use strict';
 
 angular
-.module('fireideaz')
-.directive('enterClick', function () {
-  return {
-    restrict: 'A',
-    link: function (scope, elem) {
-      elem.bind('keydown', function(event) {
-        if (event.keyCode === 13 && event.shiftKey) {
-          event.preventDefault();
-          $(elem[0]).find('button').focus();
-          $(elem[0]).find('button').click();
-        }
-      });
-    }
-  };
-});
-
+  .module('fireideaz')
+  .constant('FEATURES', [
+    {
+      name: 'Unlimited public boards',
+      free: 'X',
+      premium: 'X',
+    },
+    {
+      name: 'Create and merge cards',
+      free: 'X',
+      premium: 'X',
+    },
+    {
+      name: 'Sort and search cards',
+      free: 'X',
+      premium: 'X',
+    },
+    {
+      name: 'Export PDF and import/export CSV',
+      free: 'X',
+      premium: 'X',
+    },
+    {
+      name: 'Edit or delete columns',
+      free: 'Everyone',
+      premium: 'Only board creator',
+    },
+    {
+      name: 'Edit or delete cards',
+      free: 'Everyone',
+      premium: 'Only card creator and admin',
+    },
+    {
+      name: 'Maximum columns',
+      free: '6',
+      premium: 'Unlimited',
+    },
+    {
+      name: 'History and search of past retrospectives',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Manage multiple teams',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Unlimited team boards',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Invite people to retrospectives',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Order cards inside a column',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Change color of a column',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Login using Google and Email',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Comments on cards',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: "Display card's author",
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Pre-defined retrospective formats',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Clone a board',
+      free: '',
+      premium: 'X',
+    },
+    {
+      name: 'Slack integration',
+      free: '',
+      premium: 'X',
+    },
+  ])
 /* global EmojiPicker */
 'use strict';
 
@@ -77,111 +161,26 @@ angular
     '$rootScope',
     'FirebaseService',
     'ModalService',
-    function($scope, $filter, $window, utils, auth, $rootScope, firebaseService, modalService) {
+    'FEATURES',
+    function(
+      $scope,
+      $filter,
+      $window,
+      utils,
+      auth,
+      $rootScope,
+      firebaseService,
+      modalService,
+      FEATURES
+    ) {
       $scope.loading = true;
       $scope.messageTypes = utils.messageTypes;
       $scope.utils = utils;
       $scope.newBoard = {
         name: '',
-        text_editing_is_private: true,
+        text_editing_is_private: true
       };
-      $scope.features = [
-        {
-          name: 'Unlimited public boards',
-          free: 'X',
-          premium: 'X',
-        },
-        {
-          name: 'Create and merge cards',
-          free: 'X',
-          premium: 'X',
-        },
-        {
-          name: 'Sort and search cards',
-          free: 'X',
-          premium: 'X',
-        },
-        {
-          name: 'Export PDF and import/export CSV',
-          free: 'X',
-          premium: 'X',
-        },
-        {
-          name: 'Edit or delete columns',
-          free: 'Everyone',
-          premium: 'Only board creator',
-        },
-        {
-          name: 'Edit or delete cards',
-          free: 'Everyone',
-          premium: 'Only card creator and admin',
-        },
-        {
-          name: 'Maximum columns',
-          free: '6',
-          premium: 'Unlimited',
-        },
-        {
-          name: 'History and search of past retrospectives',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Manage multiple teams',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Unlimited team boards',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Invite people to retrospectives',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Order cards inside a column',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Change color of a column',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Login using Google and Email',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Comments on cards',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: "Display card's author",
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Pre-defined retrospective formats',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Clone a board',
-          free: '',
-          premium: 'X',
-        },
-        {
-          name: 'Slack integration',
-          free: '',
-          premium: 'X',
-        },
-      ];
+      $scope.features = FEATURES;
       $scope.userId = $window.location.hash.substring(1) || '';
       $scope.searchParams = {};
       $window.location.search
@@ -195,19 +194,22 @@ angular
       $scope.selectedType = 1;
       $scope.import = {
         data: [],
-        mapping: [],
+        mapping: []
       };
 
       $scope.droppedEvent = function(dragEl, dropEl) {
         var drag = $('#' + dragEl);
         var drop = $('#' + dropEl);
-        var dragMessageRef = firebaseService.getMessageRef($scope.userId, drag.attr('messageId'));
+        var dragMessageRef = firebaseService.getMessageRef(
+          $scope.userId,
+          drag.attr('messageId')
+        );
 
         dragMessageRef.once('value', function() {
           dragMessageRef.update({
             type: {
-              id: drop.data('column-id'),
-            },
+              id: drop.data('column-id')
+            }
           });
         });
       };
@@ -259,7 +261,7 @@ angular
 
       $scope.updatePrivateWritingToggle = function(privateWritingOn) {
         $scope.boardRef.update({
-          text_editing_is_private: privateWritingOn,
+          text_editing_is_private: privateWritingOn
         });
       };
 
@@ -269,7 +271,9 @@ angular
       };
 
       $scope.getSortFields = function() {
-        return $scope.sortField === 'votes' ? ['-votes', 'date_created'] : 'date_created';
+        return $scope.sortField === 'votes'
+          ? ['-votes', 'date_created']
+          : 'date_created';
       };
 
       $scope.saveMessage = function(message) {
@@ -278,7 +282,11 @@ angular
       };
 
       function redirectToBoard() {
-        window.location.href = window.location.origin + window.location.pathname + '#' + $scope.userId;
+        window.location.href =
+          window.location.origin +
+          window.location.pathname +
+          '#' +
+          $scope.userId;
       }
 
       $scope.isBoardNameInvalid = function() {
@@ -303,7 +311,7 @@ angular
               columns: $scope.messageTypes,
               user_id: userData.uid,
               max_votes: $scope.newBoard.max_votes || 6,
-              text_editing_is_private: $scope.newBoard.text_editing_is_private,
+              text_editing_is_private: $scope.newBoard.text_editing_is_private
             },
             function(error) {
               if (error) {
@@ -322,13 +330,13 @@ angular
 
       $scope.changeBoardContext = function() {
         $scope.boardRef.update({
-          boardContext: $scope.boardContext,
+          boardContext: $scope.boardContext
         });
       };
 
       $scope.changeBoardName = function(newBoardName) {
         $scope.boardRef.update({
-          boardId: newBoardName,
+          boardId: newBoardName
         });
 
         modalService.closeAll();
@@ -336,7 +344,11 @@ angular
 
       $scope.updateSortOrder = function() {
         var updatedFilter =
-          $window.location.origin + $window.location.pathname + '?sort=' + $scope.sortField + $window.location.hash;
+          $window.location.origin +
+          $window.location.pathname +
+          '?sort=' +
+          $scope.sortField +
+          $window.location.hash;
         $window.history.pushState({ path: updatedFilter }, '', updatedFilter);
       };
 
@@ -347,7 +359,7 @@ angular
 
         $scope.board.columns.push({
           value: name,
-          id: utils.getNextId($scope.board),
+          id: utils.getNextId($scope.board)
         });
 
         var boardColumns = firebaseService.getBoardColumns($scope.userId);
@@ -405,11 +417,11 @@ angular
             creating: true,
             user_id: $scope.userUid,
             type: {
-              id: type.id,
+              id: type.id
             },
             date: firebaseService.getServerTimestamp(),
             date_created: firebaseService.getServerTimestamp(),
-            votes: 0,
+            votes: 0
           })
           .then(addMessageCallback);
       };
@@ -451,10 +463,6 @@ angular
         }
       };
 
-      $scope.goToPremium = function() {
-        $window.location = "https://funretro.io";
-      };
-
       $scope.cleanImportData = function() {
         $scope.import.data = [];
         $scope.import.mapping = [];
@@ -469,51 +477,62 @@ angular
         $scope.userId = $window.location.hash.substring(1) || '';
         auth.logUser($scope.userId, getBoardAndMessages);
       });
-    },
+    }
   ]);
 
 'use strict';
 
-angular
-  .module('fireideaz')
-  .controller('MessageCtrl', ['$scope', '$filter',
-              '$window', 'Auth', '$rootScope', 'FirebaseService', 'ModalService', 'VoteService',
-    function($scope, $filter, $window, auth, $rootScope, firebaseService, modalService, voteService) {
-      $scope.modalService = modalService;
-      $scope.userId = $window.location.hash.substring(1);
+angular.module('fireideaz').controller('MessageCtrl', [
+  '$scope',
+  '$window',
+  'FirebaseService',
+  'ModalService',
+  'VoteService',
+  function($scope, $window, firebaseService, modalService, voteService) {
+    function mergeCardVotes(first, second) {
+      voteService.mergeMessages($scope.userId, first, second);
+    }
+    $scope.modalService = modalService;
+    $scope.userId = $window.location.hash.substring(1);
 
-      $scope.dropCardOnCard = function(dragEl, dropEl) {
-        if(dragEl !== dropEl) {
-          $scope.dragEl = dragEl;
-          $scope.dropEl = dropEl;
+    $scope.dropCardOnCard = function(dragEl, dropEl) {
+      if (dragEl !== dropEl) {
+        $scope.dragEl = dragEl;
+        $scope.dropEl = dropEl;
 
-          modalService.openMergeCards($scope);
-        }
-      };
+        modalService.openMergeCards($scope);
+      }
+    };
 
-      $scope.dropped = function(dragEl, dropEl) {
-        var drag = $('#' + dragEl);
-        var drop = $('#' + dropEl);
+    $scope.dropped = function(dragEl, dropEl) {
+      var drag = $('#' + dragEl);
+      var drop = $('#' + dropEl);
+      var firstCardId = drag.attr('messageId');
+      var secondCardId = drop.attr('messageId');
+      var firstCardReference = firebaseService.getMessageRef(
+        $scope.userId,
+        firstCardId
+      );
+      var secondCardReference = firebaseService.getMessageRef(
+        $scope.userId,
+        secondCardId
+      );
 
-        var dropMessageRef = firebaseService.getMessageRef($scope.userId, drop.attr('messageId'));
-        var dragMessageRef = firebaseService.getMessageRef($scope.userId, drag.attr('messageId'));
-
-        dropMessageRef.once('value', function(dropMessage) {
-          dragMessageRef.once('value', function(dragMessage) {
-            dropMessageRef.update({
-              text: dropMessage.val().text + '\n' + dragMessage.val().text,
-              votes: dropMessage.val().votes + dragMessage.val().votes
-            });
-
-            voteService.mergeMessages($scope.userId, drag.attr('messageId'), drop.attr('messageId'));
-
-            dragMessageRef.remove();
-            modalService.closeAll();
+      secondCardReference.once('value', function(firstCard) {
+        firstCardReference.once('value', function(secondCard) {
+          secondCardReference.update({
+            text: firstCard.val().text + '\n' + secondCard.val().text,
+            votes: firstCard.val().votes + secondCard.val().votes
           });
+
+          mergeCardVotes(firstCardId, secondCardId);
+          firstCardReference.remove();
+          modalService.closeAll();
         });
-      };
-    }]
-  );
+      });
+    };
+  }
+]);
 
 'use strict';
 
@@ -620,6 +639,25 @@ angular.module('fireideaz').directive('dialogs', ['ImportExportService', functio
 
 'use strict';
 
+angular
+.module('fireideaz')
+.directive('enterClick', function () {
+  return {
+    restrict: 'A',
+    link: function (scope, elem) {
+      elem.bind('keydown', function(event) {
+        if (event.keyCode === 13 && !event.shiftKey) {
+          event.preventDefault();
+          $(elem[0]).find('button').focus();
+          $(elem[0]).find('button').click();
+        }
+      });
+    }
+  };
+});
+
+'use strict';
+
 angular.module('fireideaz').directive('pageHeader', ['ModalService', function(modalService) {
     return {
       templateUrl : 'components/header.html',
@@ -690,7 +728,30 @@ angular.module('fireideaz').directive('spinner', [function() {
 
 angular
   .module('fireideaz')
-  .service('CsvService', [function () {
+  .service('APIService', [function () {
+    return {
+      test: function(){
+        console.log("test")
+        return true
+      },
+      createNewBoard: function({
+        boardId: boardId,
+        boardName: boardName,
+        dateCreated: dateCreated,
+        columns: columns,
+        maxVotes: maxVotes,
+        textEditingIsPrivate: textEditingIsPrivate
+      }){
+        console.log(`API Service: Creating a new board. Id: ${boardId}, Name: ${boardName}, DateCreate: ${dateCreated}, columns: ${columns}, maxVotes: ${maxVotes}`)
+        return true;
+      }
+    };
+  }]);
+
+'use strict';
+
+angular.module('fireideaz').service('CsvService', [
+  function() {
     var csvService = {};
 
     var arrayExists = function(array) {
@@ -718,44 +779,45 @@ angular
     };
 
     csvService.buildCsvText = function(doubleArray) {
-        var csvText ='';
-        
-        var longestColumn = csvService.determineLongestColumn(doubleArray);
+      var csvText = '';
 
-        // Going by row because CVS are ordered by rows
-        for(var rowIndex = 0; rowIndex < longestColumn; rowIndex++) {
-          for(var columnIndex = 0; columnIndex < longestColumn; columnIndex++) {
-            var column = doubleArray[columnIndex];
-            if(!arrayExists(column)) {
-              break;
-            }
+      var longestColumn = csvService.determineLongestColumn(doubleArray);
 
-            var nextValue = column[rowIndex];
-            if(isEmptyCell(nextValue)) {
-              nextValue = '';
-            }
-
-            if(isString(nextValue)) {
-              nextValue = endodeForCsv(nextValue);
-            }
-
-            csvText += nextValue + ',';
+      // Going by row because CSVs are ordered by rows
+      for (var rowIndex = 0; rowIndex < longestColumn; rowIndex++) {
+        for (var columnIndex = 0; columnIndex < longestColumn; columnIndex++) {
+          var column = doubleArray[columnIndex];
+          if (!arrayExists(column)) {
+            break;
           }
-  
-          csvText += '\r\n';
-        }
-  
-        return csvText;
-      };
 
-      csvService.determineLongestColumn = function(doubleArray) {
-        return doubleArray.reduce(function(prev, next) {
-          return next.length > prev ? next.length: prev;
-        }, doubleArray.length);
-      };
+          var nextValue = column[rowIndex];
+          if (isEmptyCell(nextValue)) {
+            nextValue = '';
+          }
+
+          if (isString(nextValue)) {
+            nextValue = endodeForCsv(nextValue);
+          }
+
+          csvText += nextValue + ',';
+        }
+
+        csvText += '\r\n';
+      }
+
+      return csvText;
+    };
+
+    csvService.determineLongestColumn = function(doubleArray) {
+      return doubleArray.reduce(function(prev, next) {
+        return next.length > prev ? next.length : prev;
+      }, doubleArray.length);
+    };
 
     return csvService;
-  }]);
+  }
+]);
 
 'use strict';
 
