@@ -1,10 +1,10 @@
 var config = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGE_ID"
-};
+    apiKey: "AIzaSyBOj2BiZalozXphfLd7lDbEcvP1y_8tVyE",
+    authDomain: "funretro-bada0.firebaseapp.com",
+    databaseURL: "https://funretro-bada0.firebaseio.com",
+    projectId: "funretro-bada0",
+    storageBucket: "funretro-bada0.appspot.com",
+    messagingSenderId: "810739541755"
+  };
 
 firebase.initializeApp(config);

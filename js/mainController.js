@@ -14,6 +14,7 @@ angular
     'FirebaseService',
     'ModalService',
     'FEATURES',
+    'APIService',
     function(
       $scope,
       $filter,
@@ -23,7 +24,8 @@ angular
       $rootScope,
       firebaseService,
       modalService,
-      FEATURES
+      FEATURES,
+      apiService
     ) {
       $scope.loading = true;
       $scope.messageTypes = utils.messageTypes;
@@ -74,11 +76,30 @@ angular
 
         $scope.boardObject = firebaseService.getBoardObjectRef($scope.userId);
 
+        console.log("board object");
+
+        /* dummy
+         */
+        var board = {"boardId":"asdf","columns":[{"id":1,"value":"Went well"},{"id":2,"value":"To improve"},{"id":3,"value":"Action items"}],"date_created":"Tue Mar 05 2019 16:14:21 GMT+0100 (Central European Standard Time)","max_votes":6,"text_editing_is_private":true,"user_id":"4Hn1h2yoTaXR38IwNN0bxohhxBE2"}
+
+          $scope.board = board;
+          $scope.maxVotes = board.max_votes ? board.max_votes : 6;
+          $scope.boardId = $rootScope.boardId = board.boardId;
+          $scope.boardContext = $rootScope.boardContext = board.boardContext;
+          $scope.loading = false;
+          $scope.hideVote = board.hide_vote;
+          setTimeout(function() {
+            new EmojiPicker();
+          }, 100);
+/*
         board.on('value', function(board) {
           if (board.val() === null) {
             window.location.hash = '';
             location.reload();
           }
+
+          console.log("-------val")
+          console.log(JSON.stringify(board.val()))
 
           $scope.board = board.val();
           $scope.maxVotes = board.val().max_votes ? board.val().max_votes : 6;
@@ -90,11 +111,17 @@ angular
             new EmojiPicker();
           }, 100);
         });
+        */
+
 
         $scope.boardRef = board;
         $scope.messagesRef = messagesRef;
         $scope.userUid = userData.uid;
         $scope.messages = firebaseService.newFirebaseArray(messagesRef);
+        console.log("==========================")
+        console.log(board)
+        console.log(messagesRef)
+        console.log($scope.messages)
       }
 
       if ($scope.userId !== '') {
@@ -154,8 +181,25 @@ angular
         modalService.closeAll();
         $scope.userId = utils.createUserId();
 
+        console.log("userId")
+        console.log($scope.userId)
+
+        apiService.createNewBoard({
+          boardId: $scope.userId,
+          boardName: $scope.newBoard.name,
+          dateCreated: new Date().toString(),
+          columns: $scope.messageTypes,
+          maxVotes: $scope.newBoard.max_votes || 6,
+          textEditingIsPrivate: $scope.newBoard.text_editing_is_private
+        });
+
+       // redirectToBoard();
+        // return;
+
         var callback = function(userData) {
+          console.log("Callback---")
           var board = firebaseService.getBoardRef($scope.userId);
+          console.log(board)
           board.set(
             {
               boardId: $scope.newBoard.name,
@@ -327,7 +371,9 @@ angular
       angular.element($window).bind('hashchange', function() {
         $scope.loading = true;
         $scope.userId = $window.location.hash.substring(1) || '';
+        console.log("----------")
         auth.logUser($scope.userId, getBoardAndMessages);
+        //getBoardAndMessages($scope.userId)
       });
     }
   ]);

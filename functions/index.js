@@ -35,6 +35,7 @@ exports.newboard = functions.https.onRequest(function(req, res) {
   }
 
   function createNewBoard(userId) {
+  console.log("--------")
     var board = admin.database().ref('/boards/' + userId);
 
     board.set({
