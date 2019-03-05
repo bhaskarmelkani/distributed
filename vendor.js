@@ -953,13 +953,13 @@ T.prototype.on=T.prototype.P;T.prototype.resume=T.prototype.T;T.prototype.pause=
 Z(Q.prototype,"ref",Q.prototype.na);Ib.STATE_CHANGED="state_changed";P.RUNNING="running";P.PAUSED="paused";P.SUCCESS="success";P.CANCELED="canceled";P.ERROR="error";L.RAW="raw";L.BASE64="base64";L.BASE64URL="base64url";L.DATA_URL="data_url";
 (function(){function a(a,b,e){return new Y(a,new Kb,e)}var b={TaskState:P,TaskEvent:Ib,StringFormat:L,Storage:Y,Reference:W};if("undefined"!==typeof firebase)firebase.INTERNAL.registerService("storage",a,b,void 0,!0);else throw Error("Cannot install Firebase Storage - be sure to load firebase-app.js first.");})();}).call(this);
 var config = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGE_ID"
-};
+    apiKey: "AIzaSyBOj2BiZalozXphfLd7lDbEcvP1y_8tVyE",
+    authDomain: "funretro-bada0.firebaseapp.com",
+    databaseURL: "https://funretro-bada0.firebaseio.com",
+    projectId: "funretro-bada0",
+    storageBucket: "funretro-bada0.appspot.com",
+    messagingSenderId: "810739541755"
+  };
 
 firebase.initializeApp(config);
 
